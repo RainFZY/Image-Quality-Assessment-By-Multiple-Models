@@ -26,6 +26,8 @@ Compare different models' performance:
 
 ### Test Demo
 
+*Input an image and output its IQA score*
+
 put your test image in the folder -- data/test_images
 
 choose your trained model, the pre-trained resnet18-LIVE model is given

@@ -9,6 +9,10 @@ CUDA_VISIBLE_DEVICES=0 python main.py --model='resnet18' --database='LIVE'
 Before training, the `im_dir` in `config.yaml` must to be specified.
 Train/Val/Test split ratio in intra-database experiments can be set in `config.yaml` (default is 0.6/0.2/0.2).
 
+Compare different models' performance:
+
+![](https://github.com/RainFZY/Image-Quality-Assessment-By-Multiple-Models/blob/master/data/images/compare.jpg)
+
 ### Test Demo
 
 put your test image in the folder -- data/test_images
@@ -27,7 +31,7 @@ python test_demo.py --im_path=data/images/test_images/blur.jpg --model_file=mode
 tensorboard --logdir=tensorboard_logs --port=6006
 ```
 
-e.g. put the dpai-11 file in logger/test_log, run
+e.g. put the dpai-11 file in logger/test_log, run:
 
 ```
 tensorboard --logdir="./logger/test_log" --port=6006
@@ -50,8 +54,6 @@ ssh -p port -L 6006:localhost:6006 user@host
 Enter localhost:16006 in the browser
 
 ![](https://github.com/RainFZY/Image-Quality-Assessment-By-Multiple-Models/blob/master/data/images/tensorboard.png)
-
-
 
 ### Requirements
 

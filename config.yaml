@@ -1,0 +1,29 @@
+###################### Base Settings######################
+test_during_training: True
+
+### database ###
+TID2013:
+  datainfo: ./data/TID2013fullinfo.mat
+  im_dir: /data/tid2013/distorted_images/
+TID2008:
+  datainfo: ./data/TID2008fullinfo.mat
+  im_dir: ./data/tid2008/distorted_images/
+TID2013blur:
+  datainfo: ./data/TID2013info.mat
+  im_dir: /data/tid2013/distorted_images/
+TID2008blur:
+  datainfo: ./data/TID2008info.mat
+  im_dir: /data/tid2008/distorted_images/
+LIVE:
+  datainfo: ./data/LIVEfullinfo.mat
+  im_dir: ./data/LIVE
+
+patch_size: 32
+stride: 32
+
+# Train/Val/Test split ratio
+train_ratio: 0.6
+val_ratio: 0.2
+test_ratio: 0.2
+
+

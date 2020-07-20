@@ -1,12 +1,23 @@
 ## Image Quality Assessment by Mutiple Models
 
+### Prepare
+
+1. download the database you need and put it under ./data, e.g. ./data/LIVE/fastfading ...
+
+   LIVE (release2 recommended): http://live.ece.utexas.edu/research/Quality/subjective.htm
+
+   tid2008: http://www.ponomarenko.info/tid2008.htm
+
+   tid2013: http://www.ponomarenko.info/tid2013.htm
+
+2. specify `datainfo` and`im_dir` in `config.yaml`
+
 ### Training
 
 ```bash
 CUDA_VISIBLE_DEVICES=0 python main.py --model='resnet18' --database='LIVE'
 ```
 
-Before training, the `im_dir` in `config.yaml` must to be specified.
 Train/Val/Test split ratio in intra-database experiments can be set in `config.yaml` (default is 0.6/0.2/0.2).
 
 Compare different models' performance:

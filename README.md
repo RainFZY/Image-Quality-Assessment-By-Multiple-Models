@@ -12,29 +12,39 @@
 
 2. specify `datainfo` and`im_dir` in `config.yaml`
 
+
+
 ### Training
 
 ```bash
 CUDA_VISIBLE_DEVICES=0 python main.py --model='resnet18' --database='LIVE'
 ```
 
-Train/Val/Test split ratio in intra-database experiments can be set in `config.yaml` (default is 0.6/0.2/0.2).
+- Train/Val/Test split ratio in intra-database experiments can be set in `config.yaml` (default is 0.6/0.2/0.2).
 
-Compare different models' performance:
+
+- Compare different models' performance:
+
 
 ![](https://github.com/RainFZY/Image-Quality-Assessment-By-Multiple-Models/blob/master/data/images/compare.jpg)
+
+
 
 ### Test Demo
 
 *Input an image and output its IQA score*
 
-put your test image in the folder -- data/test_images
-
-choose your trained model, the pre-trained resnet18-LIVE model is given
+run:
 
 ```bash
 python test_demo.py --im_path=data/images/test_images/blur.jpg --model_file=models/resnet18-LIVE
 ```
+
+- --im_path: put your test image in the folder -- data/test_images
+
+- --model_file: choose your trained model, the pre-trained resnet18-LIVE model is given
+
+
 
 ### Visualization
 
@@ -56,11 +66,9 @@ tensorboard --logdir="./logger/test_log" --port=6006
 ssh -p port -L 6006:localhost:6006 user@host
 ```
 
-*localhost: localhost's IP address*
-
-*user: user's name in host*
-
-*host: host's IP address*
+- *localhost: localhost's IP address*
+- *user: user's name in host*
+- *host: host's IP address*
 
 **See the visualization in your PC:**
 

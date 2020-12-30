@@ -12,6 +12,8 @@
 
 2. specify `datainfo` and`im_dir` in `config.yaml`
 
+3. make directory ‘logger’
+
 
 
 ### Training

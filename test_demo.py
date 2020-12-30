@@ -40,7 +40,10 @@ if __name__ == "__main__":
     if args.model_file == 'models/vgg19-LIVE':
         model = vgg.VGG('VGG19').to(device)
 
-    model.load_state_dict(torch.load(args.model_file))
+    if torch.cuda.is_available():
+        model.load_state_dict(torch.load(args.model_file))
+    else:
+        model.load_state_dict(torch.load(args.model_file, map_location=torch.device('cpu')))
 
     img = Image.open(args.im_path).convert('L')
     patches = NonOverlappingCropPatches(img, 32, 32)

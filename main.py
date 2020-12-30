@@ -138,7 +138,7 @@ def run(train_batch_size, epochs, lr, weight_decay, config, exp_id, log_dir, tra
     # summary(model, input_size=(32, 32))  # must remove the number of N
 
     # print("model:", model)
-    logging("model: {}".format(model))
+    # logging("model: {}".format(model))
     # if multi_gpu and torch.cuda.device_count() > 1:
     #     model = nn.DataParallel(model)
 
@@ -179,7 +179,8 @@ def run(train_batch_size, epochs, lr, weight_decay, config, exp_id, log_dir, tra
             best_criterion = SROCC
             best_epoch = engine.state.epoch
             # 保存最佳模型，以SROCC指标为准
-            torch.save(model.state_dict(), trained_model_file)
+            # _use_new_zipfile_serialization = False适用于pytorch1.6以前的版本
+            torch.save(model.state_dict(), trained_model_file, _use_new_zipfile_serialization=False)
 
 
     @trainer.on(Events.EPOCH_COMPLETED)
@@ -212,7 +213,7 @@ def run(train_batch_size, epochs, lr, weight_decay, config, exp_id, log_dir, tra
             #     .format(best_epoch, SROCC, KROCC, PLCC, RMSE, MAE, 100 * OR))
             logging("Final Test Results - Epoch: {} SROCC: {:.4f} KROCC: {:.4f} PLCC: {:.4f} RMSE: {:.4f} MAE: {:.4f} OR: {:.2f}%"
                 .format(best_epoch, SROCC, KROCC, PLCC, RMSE, MAE, 100 * OR))
-            # np.save(save_result_file, (SROCC, KROCC, PLCC, RMSE, MAE, OR))
+            np.save(save_result_file, (SROCC, KROCC, PLCC, RMSE, MAE, OR))
 
     # kick everything off
     # 执行训练
@@ -286,9 +287,7 @@ if __name__ == "__main__":
     log_dir = 'logger/test_log'
 
     ensure_dir('checkpoints')
-    trained_model_file = 'checkpoints/{}-{}'.format(args.model, args.database)
-    # ensure_dir('results')
-    # save_result_file = 'results/{}-{}-EXP{}-lr={}'.format(args.model, args.database, args.exp_id, args.lr)
+    trained_model_file = 'checkpoints/{}-{}-epoch{}-lr={}'.format(args.model, args.database, args.epochs, args.lr)
 
     # main process
     run(args.batch_size, args.epochs, args.lr, args.weight_decay, config, args.exp_id,

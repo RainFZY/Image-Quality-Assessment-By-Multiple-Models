@@ -96,7 +96,7 @@ source deactive
 ```
 
 - Python 3.6.8
-- PyTorch 1.3.0
+- PyTorch 1.7.0
 - TensorboardX 1.9, TensorFlow 2.0.0
 - [pytorch/ignite 0.2.1](https://github.com/pytorch/ignite)
 
